@@ -14,6 +14,10 @@
           <zeebe:input source="http://www.camunda.com" target="code" />
           <zeebe:input source="QR_CODE" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="true" target="width_optional" />
+          <zeebe:input source="=150" target="width" />
+          <zeebe:input source="true" target="height_optional" />
+          <zeebe:input source="=150" target="height" />
           <zeebe:input source="qrCode" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="qrcode" />
@@ -33,6 +37,8 @@
           <zeebe:input source="Hello Aztec" target="code" />
           <zeebe:input source="AZTEC" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="aztec" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="aztec" />
@@ -52,6 +58,10 @@
           <zeebe:input source="A1234567890A" target="code" />
           <zeebe:input source="CODABAR" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="true" target="width_optional" />
+          <zeebe:input source="=200" target="width" />
+          <zeebe:input source="true" target="height_optional" />
+          <zeebe:input source="=40" target="height" />
           <zeebe:input source="codabar" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="codabar" />
@@ -71,6 +81,8 @@
           <zeebe:input source="Code128-Test!" target="code" />
           <zeebe:input source="CODE_128" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="code128" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="code128" />
@@ -90,6 +102,8 @@
           <zeebe:input source="CODE39TEST" target="code" />
           <zeebe:input source="CODE_39" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="code39" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="code39" />
@@ -109,6 +123,8 @@
           <zeebe:input source="CODE93TEST" target="code" />
           <zeebe:input source="CODE_93" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="code93" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="code93" />
@@ -128,6 +144,8 @@
           <zeebe:input source="DataMatrix123" target="code" />
           <zeebe:input source="DATA_MATRIX" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="datamatrix" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="datamatrix" />
@@ -147,6 +165,8 @@
           <zeebe:input source="5901234123457" target="code" />
           <zeebe:input source="EAN_13" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="ean13" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="ean13" />
@@ -166,6 +186,8 @@
           <zeebe:input source="96385074" target="code" />
           <zeebe:input source="EAN_8" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="ean8" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="ean8" />
@@ -185,6 +207,8 @@
           <zeebe:input source="12345678901231" target="code" />
           <zeebe:input source="ITF" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="itf" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="itf" />
@@ -219,6 +243,8 @@
           <zeebe:input source="PDF417 barcode test content" target="code" />
           <zeebe:input source="PDF_417" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="pdf417" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="pdf417" />
@@ -238,6 +264,8 @@
           <zeebe:input source="012345678905" target="code" />
           <zeebe:input source="UPC_A" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="upca" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="upca" />
@@ -257,6 +285,8 @@
           <zeebe:input source="01234565" target="code" />
           <zeebe:input source="UPC_E" target="barcodeFormat" />
           <zeebe:input source="PNG" target="outputFormat" />
+          <zeebe:input source="false" target="width_optional" />
+          <zeebe:input source="false" target="height_optional" />
           <zeebe:input source="upce" target="destinationFileName" />
           <zeebe:input source="={&#34;type&#34;:&#34;CAMUNDA&#34;}" target="destinationJsonStorageDefinition" />
           <zeebe:output source="= result.destinationFile" target="upce" />

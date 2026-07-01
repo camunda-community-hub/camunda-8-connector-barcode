@@ -45,6 +45,9 @@ public class BarcodeInput implements CherryInput {
     public static final String BARCODE_FORMAT_UPC_E = BarcodeFormat.UPC_E.toString();
 
 
+    public static final String WIDTH = "width";
+    public static final String HEIGHT = "height";
+
     public static final String OUTPUT_FORMAT = "outputFormat";
     public static final String OUTPUT_FORMAT_PNG = "PNG";
     public static final String OUTPUT_FORMAT_JPEG = "JPEG";
@@ -98,6 +101,22 @@ public class BarcodeInput implements CherryInput {
             .addChoice(OUTPUT_FORMAT_GIF, OUTPUT_FORMAT_GIF)
             .addChoice(OUTPUT_FORMAT_WBPM, OUTPUT_FORMAT_WBPM);
 
+    public static final RunnerParameter parameterWidth = new RunnerParameter(
+            BarcodeInput.WIDTH,
+            "Width",
+            Integer.class,
+            RunnerParameter.Level.OPTIONAL,
+            "Width of the generated barcode image in pixels. Default: 100.")
+            .setDefaultValue("0");
+
+    public static final RunnerParameter parameterHeight = new RunnerParameter(
+            BarcodeInput.HEIGHT,
+            "Height",
+            Integer.class,
+            RunnerParameter.Level.OPTIONAL,
+            "Height of the generated barcode image in pixels. Default: 100 for 2D formats (QR_CODE, AZTEC, DATA_MATRIX), 50 for linear formats.")
+            .setDefaultValue("0");
+
     public static final RunnerParameter parameterDestinationFileName = new RunnerParameter(
             BarcodeInput.DESTINATION_FILE_NAME,
             // name
@@ -116,18 +135,21 @@ public class BarcodeInput implements CherryInput {
             parameterBarcode,
             parameterBarcodeFormat,
             parameterOutputFormat,
+            parameterWidth,
+            parameterHeight,
             parameterDestinationFileName,
             parameterDestinationJsonStorageDefinition
     );
 
 
     private final Logger logger = LoggerFactory.getLogger(BarcodeInput.class.getName());
-    public Long dpi = 300L;
     private String code;
     private String barcodeFormat;
     private String destinationFileName;
     private Object destinationJsonStorageDefinition;
     private String outputFormat;
+    private Integer width;
+    private Integer height;
 
     public String getCode() {
         return code;
@@ -149,6 +171,25 @@ public class BarcodeInput implements CherryInput {
         return destinationJsonStorageDefinition;
     }
 
+    public Integer getWidth() {
+        return width;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public int getDefaultWidth() {
+        return (width == null || width == 0) ? 100 : width;
+    }
+
+    public int getDefaultHeight() {
+        if (height != null && height != 0) return height;
+        return (BARCODE_FORMAT_QR_CODE.equals(barcodeFormat)
+                || BARCODE_FORMAT_AZTEC.equals(barcodeFormat)
+                || BARCODE_FORMAT_DATA_MATRIX.equals(barcodeFormat)) ? 100 : 50;
+    }
+
 
     @JsonIgnore
     @Override
@@ -165,7 +206,7 @@ public class BarcodeInput implements CherryInput {
     @JsonIgnore
     public StorageDefinition getDestinationStorageDefinitionObject() throws ConnectorException {
         try {
-            StorageDefinition storageDefinitionObj = null;
+            StorageDefinition storageDefinitionObj;
             // Attention, it may be an empty string due to the modeler which not like null value
             if (getDestinationJsonStorageDefinition() != null && !getDestinationJsonStorageDefinition().toString().trim().isEmpty()) {
                 storageDefinitionObj = StorageDefinition.getFromObject(getDestinationJsonStorageDefinition());

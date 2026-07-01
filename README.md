@@ -125,8 +125,54 @@ Generate a barcode from a code and a barcode format
 
 ![Barcode.png](doc/BarcodeProcess.png)
 
+# Save the image
 
-### Inputs
+The connector uses the [FileStorage library](https://github.com/camunda-community-hub/camunda-8-connector-filestorage) to save the generated barcode image as a document. This library supports multiple storage backends (folder, S3, Google Drive, Camunda document store, etc.).
+
+## Saving to Camunda document store
+
+To save the image as a Camunda document, set `destinationJsonStorageDefinition` to:
+
+```json
+{"type": "CAMUNDA"}
+```
+
+The connector output variable (e.g. `destinationFile`) will contain:
+
+```json
+{
+  "storageDefinition": "CAMUNDA",
+  "camundaReference": {
+    "storeId": "in-memory",
+    "documentId": "d649415c-10fb-48c0-9cfd-d9a8de6e6d9e",
+    "contentHash": "0af7f0688d411b2e54748b2195607c9ec8abc4827e328b2963adea72b6ce2d56",
+    "metadata": {
+      "contentType": "image/png",
+      "expiresAt": null,
+      "size": 197,
+      "fileName": "aztec",
+      "processDefinitionId": null,
+      "processInstanceKey": null,
+      "customProperties": {}
+    }
+  },
+  "fileName": "aztec"
+}
+```
+
+## Displaying the image in a Camunda Form
+
+Use a **Document Preview** component with the `dataSource` expression:
+
+```feel
+=[myVariable.camundaReference]
+```
+
+Replace `myVariable` with the name of your output variable (e.g. `=[destinationFile.camundaReference]`).
+
+# Details
+
+## Inputs
 | Name                             | Description              | Class            | Level    |
 |----------------------------------|--------------------------|------------------|----------|
 | code                             | Code                     | java.lang.String | REQUIRED |
@@ -137,14 +183,14 @@ Generate a barcode from a code and a barcode format
 
 
 
-### Outputs
+## Outputs
 | Name            | Description               | Class            | Level    |
 |-----------------|---------------------------|------------------|----------|
 | destinationFile | Destination variable name | java.lang.String | REQUIRED |
 
 
 
-### Errors
+## Errors
 | Name                                     | Explanation                                                          |
 |------------------------------------------|----------------------------------------------------------------------|
 | GENERATION_ERROR                         | During the generation operation                                      |

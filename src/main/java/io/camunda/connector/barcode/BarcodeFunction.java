@@ -34,6 +34,8 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 @OutboundConnector(name = "BarcodeFunction", inputVariables = {BarcodeInput.BARCODE_FORMAT,
         BarcodeInput.CODE,
         BarcodeInput.OUTPUT_FORMAT,
+        BarcodeInput.WIDTH,
+        BarcodeInput.HEIGHT,
         BarcodeInput.DESTINATION_FILE_NAME,
         BarcodeInput.DESTINATION_JSONSTORAGEDEFINITION,
     }, type = "c-barcode-function")
@@ -63,15 +65,13 @@ public class BarcodeFunction implements OutboundConnectorFunction, CherryConnect
 
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {
-            final int size = 100;
-            final BitMatrix bitMatrix = new MultiFormatWriter().encode(code, barcodeFormat, size, size);
+            final BitMatrix bitMatrix = new MultiFormatWriter().encode(code, barcodeFormat,
+                    barcodeInput.getDefaultWidth(), barcodeInput.getDefaultHeight());
 
             MatrixToImageWriter.writeToStream(bitMatrix, formatOutput, outputStream);
-            logger.info("Generates code[" + code + "] imageFormat[" + barcodeFormat + "]");
         } catch (Exception e) {
             logger.error("During generation operation : ", e);
             throw new ConnectorException(BarcodeError.GENERATION_ERROR, "Error " + e);
-
         }
 
         StorageDefinition destinationStorageDefinition = barcodeInput.getDestinationStorageDefinitionObject();
@@ -96,6 +96,9 @@ public class BarcodeFunction implements OutboundConnectorFunction, CherryConnect
 
             FileVariableReference outputFileReference = fileRepoFactory.saveFileVariable(fileVariableOut, outboundConnectorContext);
             barcodeOutput.destinationFile = outputFileReference;
+
+            logger.info("Generates code[" + code + "] imageFormat[" + barcodeFormat + "] in {} ms", System.currentTimeMillis() - beginTime);
+
             return barcodeOutput;
         } catch (Exception e) {
             logger.error("During operation : ", e);

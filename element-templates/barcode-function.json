@@ -101,10 +101,6 @@
           "value": "ITF"
         },
         {
-          "name": "MAXICODE",
-          "value": "MAXICODE"
-        },
-        {
           "name": "PDF_417",
           "value": "PDF_417"
         },
@@ -113,24 +109,12 @@
           "value": "QR_CODE"
         },
         {
-          "name": "RSS_14",
-          "value": "RSS_14"
-        },
-        {
-          "name": "RSS_EXPANDED",
-          "value": "RSS_EXPANDED"
-        },
-        {
           "name": "UPC_A",
           "value": "UPC_A"
         },
         {
           "name": "UPC_E",
           "value": "UPC_E"
-        },
-        {
-          "name": "UPC_EAN_EXTENSION",
-          "value": "UPC_EAN_EXTENSION"
         }
       ],
       "binding": {
@@ -175,6 +159,84 @@
       },
       "constraints": {
         "notEmpty": true
+      },
+      "group": "Input"
+    },
+    {
+      "id": "width_optional",
+      "label": "Provide Width?",
+      "description": "Width of the generated barcode image in pixels. Default: 100.",
+      "value": "false",
+      "binding": {
+        "name": "width_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "Input"
+    },
+    {
+      "condition": {
+        "property": "width_optional",
+        "equals": "true"
+      },
+      "id": "width",
+      "label": "Width",
+      "description": "Width of the generated barcode image in pixels. Default: 100.",
+      "value": "0",
+      "type": "Number",
+      "feel": "optional",
+      "binding": {
+        "name": "width",
+        "type": "zeebe:input"
+      },
+      "group": "Input"
+    },
+    {
+      "id": "height_optional",
+      "label": "Provide Height?",
+      "description": "Height of the generated barcode image in pixels. Default: 100 for 2D formats (QR_CODE, AZTEC, DATA_MATRIX), 50 for linear formats.",
+      "value": "false",
+      "binding": {
+        "name": "height_optional",
+        "type": "zeebe:input"
+      },
+      "type": "Dropdown",
+      "choices": [
+        {
+          "name": "Yes",
+          "value": "true"
+        },
+        {
+          "name": "No",
+          "value": "false"
+        }
+      ],
+      "group": "Input"
+    },
+    {
+      "condition": {
+        "property": "height_optional",
+        "equals": "true"
+      },
+      "id": "height",
+      "label": "Height",
+      "description": "Height of the generated barcode image in pixels. Default: 100 for 2D formats (QR_CODE, AZTEC, DATA_MATRIX), 50 for linear formats.",
+      "value": "0",
+      "type": "Number",
+      "feel": "optional",
+      "binding": {
+        "name": "height",
+        "type": "zeebe:input"
       },
       "group": "Input"
     },
