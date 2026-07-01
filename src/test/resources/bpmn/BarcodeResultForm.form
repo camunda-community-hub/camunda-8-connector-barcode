@@ -1,0 +1,143 @@
+{
+  "components": [
+    {
+      "label": "QRCode",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_0dgwfdc",
+        "columns": 8
+      },
+      "id": "Field_0xaoopi",
+      "dataSource": "=[qrcode.camundaReference]"
+    },
+    {
+      "label": "aztec",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_0dgwfdc",
+        "columns": null
+      },
+      "id": "Field_0nct2q5",
+      "dataSource": "=[aztec.camundaReference]"
+    },
+    {
+      "label": "codabar",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_0s1082w",
+        "columns": 8
+      },
+      "id": "Field_0sodzap",
+      "dataSource": "=[codabar.camundaReference]"
+    },
+    {
+      "label": "code128",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_0s1082w",
+        "columns": null
+      },
+      "id": "Field_1vmk2h9",
+      "dataSource": "=[code128.camundaReference]"
+    },
+    {
+      "label": "code39",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_1x1n8ow",
+        "columns": null
+      },
+      "id": "Field_1i9n13b",
+      "dataSource": "=[code39.camundaReference]"
+    },
+    {
+      "label": "code93",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_1x1n8ow",
+        "columns": null
+      },
+      "id": "Field_0admlqu",
+      "dataSource": "=[code93.camundaReference]"
+    },
+    {
+      "label": "datamatrix",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_06euqg0",
+        "columns": null
+      },
+      "id": "Field_0p6zvxg",
+      "dataSource": "=[datamatrix.camundaReference]"
+    },
+    {
+      "label": "ean13",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_06euqg0",
+        "columns": null
+      },
+      "id": "Field_0hvgpvc",
+      "dataSource": "=[ean13.camundaReference]"
+    },
+    {
+      "label": "ean8",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_125amb6",
+        "columns": null
+      },
+      "id": "Field_1v4qaao",
+      "dataSource": "=[ean8.camundaReference]"
+    },
+    {
+      "label": "itf",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_125amb6",
+        "columns": null
+      },
+      "id": "Field_0tq09eo",
+      "dataSource": "=[itf.camundaReference]"
+    },
+    {
+      "label": "pdf417",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_0xzi41l",
+        "columns": null
+      },
+      "id": "Field_1foe9nt",
+      "dataSource": "=[pdf417.camundaReference]"
+    },
+    {
+      "label": "upca",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_0xzi41l",
+        "columns": null
+      },
+      "id": "Field_1bxg1ei",
+      "dataSource": "=[upca.camundaReference]"
+    },
+    {
+      "label": "upce",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_08c65rg",
+        "columns": 8
+      },
+      "id": "Field_1c7ct20",
+      "dataSource": "=[upce.camundaReference]"
+    }
+  ],
+  "type": "default",
+  "id": "BarcodeResultForm",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.48.0"
+  },
+  "schemaVersion": 19
+}
