@@ -2,8 +2,25 @@
 [![Community extension badge](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community)
 ![Compatible with: Camunda Platform 8](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%208-0072Ce)
 
+
 # camunda-8-connector-barcode
-Generate a barcode from different format
+
+![barcode.png](barcode.png)
+
+
+Generate a barcode from different format:
+* AZTEC, 
+* CODABAR
+* CODE 128
+* CODE 39 
+* CODE 93
+* DATAMATRIX
+* EAN 13
+* EAN 8ITF
+* PDF 417
+* QRCODE
+* UPCA
+* UPCE
 
 Different format
 
